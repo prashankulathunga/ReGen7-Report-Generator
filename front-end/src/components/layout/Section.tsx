@@ -1,3 +1,3 @@
-export const Section = ({ children }: { children: any }) => {
-    return <div className='py-16 md:py-24'>{children}</div>;
+export const Section = ({ children }: { children: React.ReactNode }) => {
+    return <div className="py-16 md:py-24">{children}</div>;
 };

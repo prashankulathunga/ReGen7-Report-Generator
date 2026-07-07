@@ -56,7 +56,7 @@ export const LoginPage = () => {
                 </form>
 
                 <Button
-                    className="mt-12 py-5 w-full md:max-w-sm cursor-pointer"
+                    className="mt-12 py-5 w-full md:max-w-md cursor-pointer"
                     type="submit"
                     form="login-form"
                 >

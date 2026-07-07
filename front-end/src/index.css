@@ -6,26 +6,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
-  === Theme concept: "Ledger" ===
-  Built for a weekly report generation system — the job of this palette is to
-  make numbers scannable and deltas instantly legible.
-
-  - Neutrals: deep ink-navy (not pure gray) for a "bound report" feel.
-  - Primary: confident indigo-blue (hue 264 — same hue shadcn's own dark
-    sidebar-primary default already used, extended into a full system).
-  - Accent: warm brass/gold, reserved for highlighted metrics & key callouts.
-  - Semantic: success / warning / info added alongside destructive, since
-    report status (on-track / at-risk / off-track) is core to the product.
-  - Charts: a 5-color categorical set tuned to sit together in the same
-    bar/line/pie chart without turning into a rainbow.
-
-  Fonts:
-  - Inter Variable: UI + body text, strong tabular figure support.
-  - JetBrains Mono Variable: numeric/data face — use on report tables,
-    metric values, and deltas so columns of numbers align cleanly.
-*/
-
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: 'Inter Variable', sans-serif;
@@ -101,7 +81,7 @@
     --info: oklch(0.55 0.14 235);
     --info-foreground: oklch(0.98 0.005 260);
     --border: oklch(0.9 0.01 260);
-    --input: oklch(0.99 0.004 260);
+    --input: oklch(0.9 0.004 260);
     --ring: oklch(0.42 0.14 264 / 0.1);
     --chart-1: oklch(0.55 0.16 264);
     --chart-2: oklch(0.65 0.14 165);
