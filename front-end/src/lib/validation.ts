@@ -1,7 +1,7 @@
 // zod validations
 import { z } from 'zod';
 
-export const roleSchema = z.enum(['member', 'manager', 'admin']);
+export const roleSchema = z.enum(['Member', 'Manager', 'Admin']);
 
 // User validations
 export const loginSchema = z.object({
@@ -25,7 +25,7 @@ export const registerSchema = z
             .string()
             .min(1, 'Password is required')
             .min(8, 'Password must be at least 8 characters'),
-        regCode: z.string().min(2, 'Must be at least 4 character'),
+        regCode: z.string().min(4, 'Must be at least 4 character'),
         role: roleSchema,
     })
     .refine((data) => data.password === data.confirmPassword, {

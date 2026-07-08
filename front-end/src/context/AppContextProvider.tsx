@@ -1,3 +1,4 @@
+import { type TAuthUser } from '../types/index';
 import {
     createContext,
     useContext,
@@ -10,18 +11,30 @@ import {
 type AppContextType = {
     isUser: boolean;
     isLoginForm: boolean;
+    user: TAuthUser;
     setIsLoginForm: Dispatch<SetStateAction<boolean>>;
+    setUser: Dispatch<SetStateAction<TAuthUser>>;
 };
 
 const AppContext = createContext<AppContextType | null>(null);
 
 export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     const [isLoginForm, setIsLoginForm] = useState<boolean>(true);
+    const [user, setUser] = useState<TAuthUser>({
+        id: 'usr_002',
+        firstName: 'Sarah',
+        lastName: 'Williams',
+        email: 'sarah.williams@example.com',
+        regCode: 'RGEN1002',
+        role: 'Member',
+    });
 
     const value: AppContextType = {
         isUser: true,
         isLoginForm,
         setIsLoginForm,
+        user,
+        setUser,
     };
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

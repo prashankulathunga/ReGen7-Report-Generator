@@ -22,7 +22,7 @@ const { setIsLoginForm } = useAppContext();
             password: '',
             confirmPassword: '',
             regCode: '',
-            role: 'member',
+            role: 'Member',
         },
     });
 
@@ -32,9 +32,9 @@ const { setIsLoginForm } = useAppContext();
     };
 
     const selectItems: SelectItem[] = [
-        { label: 'Member', value: 'member' },
-        { label: 'Manager', value: 'manager' },
-        { label: 'Admin', value: 'admin' },
+        { label: 'Member', value: 'Member' },
+        { label: 'Manager', value: 'Manager' },
+        { label: 'Admin', value: 'Admin' },
     ];
 
     return (

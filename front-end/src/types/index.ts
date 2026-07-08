@@ -8,6 +8,10 @@ export type TLoginSchema = z.infer<typeof loginSchema>;
 
 export type TRegisterSchema = z.infer<typeof registerSchema>;
 
+export type TAuthUser = Omit<TRegisterSchema, 'password' | 'confirmPassword'> & {
+    id: string;
+};
+
 // Form input types
 export type FormInputProps<T extends FieldValues> = {
     control: Control<T>;
