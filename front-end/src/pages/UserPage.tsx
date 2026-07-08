@@ -24,14 +24,14 @@ export const UserPage = () => {
                             className="absolute inset-0 object-cover h-full rounded-4xl opacity-2"
                         />
 
-                        <div className="flex items-start justify-center h-full flex-col text-balance z-12">
+                        <div className="flex items-start justify-center h-full flex-col z-12">
                             <h2 className="font-heading text-primary-foreground font-medium">
                                 Generate weekly reports and track team progress.
                             </h2>
                             <Separator className="mt-4 opacity-20 md:max-w-xs xl:max-w-sm" />
-                            <p className="text-muted/96 leading-7 mt-4 font-light md:max-lg:text-sm/6">
+                            <p className="text-muted/96 leading-7 mt-4 text-balance">
                                 Welcome to{' '}
-                                <span className="underline underline-offset-6 font-normal">
+                                <span className="underline underline-offset-5 font-normal">
                                     ReGen<span className="font-mono">7</span>
                                 </span>{' '}
                                 generate, submit and manage weekly reports with a simple team

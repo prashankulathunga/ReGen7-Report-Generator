@@ -35,7 +35,15 @@ export type FormSelectProps<T extends FieldValues> = {
     id: string;
 };
 
+// select item type
 export type SelectItem = {
     label: string;
     value: string;
+};
+
+// dashboard card type
+export type DashboardCardData = {
+    title: string;
+    count: number;
+    desc: string;
 };

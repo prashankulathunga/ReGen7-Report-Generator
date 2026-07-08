@@ -26,7 +26,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         lastName: 'Williams',
         email: 'sarah.williams@example.com',
         regCode: 'RGEN1002',
-        role: 'Member',
+        role: 'Manager',
     });
 
     const value: AppContextType = {

@@ -8,6 +8,7 @@ import {
     SidebarGroupLabel,
     SidebarHeader,
     SidebarMenu,
+    SidebarMenuBadge,
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
@@ -28,31 +29,33 @@ export const AppSideBar = () => {
 
     const items = [
         {
-            title: 'Dashboard',
+            title: user.role ? user.role + ' Dashboard' : 'Dashboard',
             url: '/',
+            count: null,
             icon: LayoutDashboard,
         },
         {
-            title: 'Report',
+            title: user.role != 'Member' ? 'All Report' : 'Report',
             url: '/report',
+            count: 28,
             icon: ReceiptText,
         },
     ];
 
     return (
-        <Sidebar>
+        <Sidebar variant='inset'>
             {/* sidebar header icon place */}
             <SidebarHeader className="p-6">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <div className="flex items-center gap-2">
-                            <div className="rounded-full bg-primary aspect-square flex items-center justify-center px-3">
+                            <div className="rounded-sm bg-primary aspect-square flex items-center justify-center px-3">
                                 <p className="font-mono text-primary-foreground text-sm">RG7</p>
                             </div>
                             <div>
-                                <p className="font-semibold">
+                                <h3 className="font-semibold">
                                     ReGen <span className="font-mono">7</span>
-                                </p>
+                                </h3>
                                 <p className="text-xs/3 text-muted-foreground/60 font-medium uppercase">
                                     {user.role}
                                 </p>
@@ -66,7 +69,7 @@ export const AppSideBar = () => {
                 <SidebarGroup>
                     <SidebarGroupLabel>Main Tasks</SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu className="mt-2 space-y-0.5">
+                        <SidebarMenu className="space-y-0.5">
                             {items.map((item, index) => (
                                 <SidebarMenuItem key={index}>
                                     <Link to={item.url}>
@@ -78,6 +81,9 @@ export const AppSideBar = () => {
                                             {item.icon && <item.icon />}
                                             <span className="text-xs md:text-sm">{item.title}</span>
                                         </SidebarMenuButton>
+                                        <SidebarMenuBadge className="text-muted-foreground/60 font-mono">
+                                            {item?.count}
+                                        </SidebarMenuBadge>
                                     </Link>
                                 </SidebarMenuItem>
                             ))}
@@ -87,17 +93,15 @@ export const AppSideBar = () => {
             </SidebarContent>
 
             <SidebarFooter>
+                <Separator className="opacity-20" />
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton className="rounded-sm text-xs md:text-sm hover:text-destructive hover:bg-transparent text-muted-foreground/80">
-                            <LogOut /> Log Out
+                            <LogOut /> <span className="sr-only">Log Out</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarFooter>
-
-            <Separator className="opacity-20" />
-            <SidebarFooter />
         </Sidebar>
     );
 };
