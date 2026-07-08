@@ -22,15 +22,15 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
     const [isLoginForm, setIsLoginForm] = useState<boolean>(true);
     const [user, setUser] = useState<TAuthUser>({
         id: 'usr_002',
-        firstName: 'Sarah',
-        lastName: 'Williams',
-        email: 'sarah.williams@example.com',
+        firstName: 'Prashan',
+        lastName: 'Kulathunga',
+        email: 'prashan.kulathunga@example.com',
         regCode: 'RGEN1002',
-        role: 'Manager',
+        role: 'Member',
     });
 
     const value: AppContextType = {
-        isUser: true,
+        isUser: false,
         isLoginForm,
         setIsLoginForm,
         user,
