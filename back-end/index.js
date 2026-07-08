@@ -6,8 +6,12 @@ import cors from 'cors';
 
 import db from './model/connection.js';
 
+// route import
+import UserRoute from './route/UserRoute.js';
+
 // initialize express app
 const app = express();
+app.use(express.json());
 
 // define cors for cros origin problem -> :5173 to :3000
 app.use(cors());
@@ -38,3 +42,6 @@ app.listen(port, async () => {
     console.log(`Server is running on port ${port}`);
     await testDatabaseConnection();
 });
+
+// route section
+app.use('/api/v1/user', UserRoute);
