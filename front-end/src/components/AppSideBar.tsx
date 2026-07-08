@@ -8,7 +8,6 @@ import {
     SidebarGroupLabel,
     SidebarHeader,
     SidebarMenu,
-    SidebarMenuBadge,
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
@@ -31,19 +30,19 @@ export const AppSideBar = () => {
         {
             title: user.role ? user.role + ' Dashboard' : 'Dashboard',
             url: '/',
-            count: null,
             icon: LayoutDashboard,
-        },
-        {
-            title: user.role != 'Member' ? 'All Report' : 'Report',
-            url: '/report',
-            count: 28,
-            icon: ReceiptText,
         },
     ];
 
+    if (user.role == 'Manager') {
+        items.push({
+            title: 'Projects',
+            url: '/project',
+            icon: ReceiptText,
+        });
+    }
     return (
-        <Sidebar variant='inset'>
+        <Sidebar variant="inset">
             {/* sidebar header icon place */}
             <SidebarHeader className="p-6">
                 <SidebarMenu>
@@ -81,9 +80,6 @@ export const AppSideBar = () => {
                                             {item.icon && <item.icon />}
                                             <span className="text-xs md:text-sm">{item.title}</span>
                                         </SidebarMenuButton>
-                                        <SidebarMenuBadge className="text-muted-foreground/60 font-mono">
-                                            {item?.count}
-                                        </SidebarMenuBadge>
                                     </Link>
                                 </SidebarMenuItem>
                             ))}

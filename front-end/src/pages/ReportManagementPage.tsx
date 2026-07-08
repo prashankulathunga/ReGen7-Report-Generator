@@ -1,7 +1,7 @@
 export const ReportManagementPage = ()=>{
     return(
         <div className='content-p'>
-            Report Management Page
+            Project Management Page
         </div>
     )
 }

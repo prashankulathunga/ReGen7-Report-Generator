@@ -1,4 +1,7 @@
+import { Chart } from '@/components/Chart';
 import { DashboardCards } from '@/components/DashboardCards';
+import { ProjectCard } from '@/components/ProjectCard';
+import { Card } from '@/components/ui/card';
 import { useAppContext } from '@/context/AppContextProvider';
 import type { DashboardCardData } from '@/types';
 
@@ -48,13 +51,24 @@ export const DashboardPage = () => {
                 </p>
             </div>
             <div className="mt-6 md:mt-8">
-                <div className="grid grid-cols-12 gap-4">
-                    {user.role === 'Manager' && cardData.map((data, index) => (
-                        <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3">
-                            <DashboardCards card={data} />
-                        </div>
-                    ))}
-                </div>
+                {/* manager section dashboard */}
+
+                {user.role === 'Manager' && (
+                    <div className="grid grid-cols-12 gap-4">
+                        {cardData.map((data, index) => (
+                            <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3">
+                                <DashboardCards card={data} />
+                            </div>
+                        ))}
+
+                        <Card className="col-span-12 lg:col-span-8">
+                            <Chart/>
+                        </Card>
+                        <Card className="col-span-12 lg:col-span-4">
+                            <ProjectCard/>
+                        </Card>
+                    </div>
+                )}
             </div>
         </div>
     );

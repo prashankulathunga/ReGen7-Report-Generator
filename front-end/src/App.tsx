@@ -18,7 +18,7 @@ function App() {
                 {isUser ? (
                     <Route element={<MainSheet />}>
                         <Route index element={<DashboardPage />} />
-                        <Route path="report" element={<ReportManagementPage />} />
+                        <Route path="project" element={<ReportManagementPage />} />
                     </Route>
                 ) : (
                     <Route element={<UserPage />}>
