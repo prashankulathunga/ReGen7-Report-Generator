@@ -38,11 +38,12 @@ const createReport = async (req, res) => {
 
         // need to check project is exists
 
-        const [isProjectExists] = await db.execute(`SELECT * FROM user_projects WHERE project_id = ?`, [
-            projectId,
-        ])
+        const [isProjectExists] = await db.execute(
+            `SELECT * FROM user_projects WHERE project_id = ? AND user_id = ?`,
+            [projectId, userId],
+        );
 
-        if(isProjectExists.length == 0){
+        if (isProjectExists.length == 0) {
             return res.status(404).json({
                 message: 'Project is not found',
             });
