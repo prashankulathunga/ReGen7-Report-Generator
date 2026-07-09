@@ -8,6 +8,7 @@ import db from './model/connection.js';
 
 // route import
 import UserRoute from './route/UserRoute.js';
+import ReportRoute from './route/ReportRoute.js';
 
 // initialize express app
 const app = express();
@@ -45,3 +46,4 @@ app.listen(port, async () => {
 
 // route section
 app.use('/api/v1/user', UserRoute);
+app.use('/api/v1/report', ReportRoute);
