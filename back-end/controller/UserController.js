@@ -76,4 +76,22 @@ const signIn = async (req, res) => {
     }
 };
 
-export default { signUp, signIn };
+const getUser = async (req, res) => {
+    try {
+        if (!req.user || !req.user.userId) {
+            console.log(req.user);
+            return res.status(401).json({ message: 'Unauthorized. User ID not found!' });
+        }
+        const userId = req.user.userId;
+
+        const [rows] = await db.execute('SELECT * FROM users WHERE id =?', [userId]);
+        if (rows.length === 0) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        return res.status(200).json({ message: 'User data loaded successfully', data: rows[0] });
+    } catch (error) {
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+export default { signUp, signIn, getUser };
