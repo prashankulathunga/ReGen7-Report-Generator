@@ -12,7 +12,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { useAppContext } from '@/context/AppContextProvider';
-import { ReceiptText, LayoutDashboard, LogOut } from 'lucide-react';
+import { Folder, GripVertical, LogOut } from 'lucide-react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -30,15 +30,15 @@ export const AppSideBar = () => {
         {
             title: user.role ? user.role + ' Dashboard' : 'Dashboard',
             url: '/',
-            icon: LayoutDashboard,
+            icon: GripVertical,
         },
     ];
 
     if (user.role == 'Manager') {
         items.push({
-            title: 'Projects',
+            title: 'Project',
             url: '/project',
-            icon: ReceiptText,
+            icon: Folder,
         });
     }
     return (
@@ -48,7 +48,7 @@ export const AppSideBar = () => {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <div className="flex items-center gap-2">
-                            <div className="rounded-sm bg-primary aspect-square flex items-center justify-center px-3">
+                            <div className="rounded-full bg-primary aspect-square flex items-center justify-center px-3">
                                 <p className="font-mono text-primary-foreground text-sm">RG7</p>
                             </div>
                             <div>

@@ -31,14 +31,14 @@ export const Chart = () => {
     const chartConfig = {
         desktop: {
             label: 'Desktop',
-            color: 'var(--primary)',
+            color: 'var(--chart-4)',
         },
     } satisfies ChartConfig;
 
     return (
         <div>
             <CardHeader>
-                <CardTitle className='text-balance'>Weekly Completed Submission Summary</CardTitle>
+                <CardTitle className='text-balance'>Weekly Late Submission Summary</CardTitle>
                 <CardDescription className="text-xs -mt-1">January - June 2024</CardDescription>
                 <div className="flex gap-2 leading-none font-medium md:mt-4 mt-2 text-muted-foreground/60 text-xs md:text-sm">
                     Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
@@ -48,7 +48,7 @@ export const Chart = () => {
                 </div>
             </CardHeader>
             <CardContent>
-                <ChartContainer config={chartConfig}>
+                <ChartContainer config={chartConfig} className='min-h-96'>
                     <BarChart
                         accessibilityLayer
                         data={chartData}
@@ -69,7 +69,7 @@ export const Chart = () => {
                             <LabelList
                                 position="top"
                                 offset={12}
-                                className="fill-foreground max-sm:hidden font-mono"
+                                className="fill-foreground font-mono"
                                 fontSize={10}
                             />
                         </Bar>
