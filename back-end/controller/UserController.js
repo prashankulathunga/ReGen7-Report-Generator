@@ -1,7 +1,10 @@
 import db from '../model/connection.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const saltRounds = 10;
+const secret_key = process.env.JWT_SECRET;
+
 // user sign up controller
 const signUp = async (req, res) => {
     const { firstName, lastName, email, password, confirmPassword, userRole } = req.body;
@@ -43,9 +46,32 @@ const signUp = async (req, res) => {
 };
 
 // user sign in controller
-const signIn = (req, res) => {
+const signIn = async (req, res) => {
+    const { email, password } = req.body;
     try {
+        if (!email || !password) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
+        const [rows] = await db.execute('SELECT * FROM users WHERE email = ?', [email]);
+
+        console.log(rows[0]);
+
+        if (rows.length === 0) {
+            return res.status(401).json({ message: 'Invalid email or password' });
+        }
+
+        const match = await bcrypt.compare(password, rows[0].password_hash);
+        if (match) {
+            const token = jwt.sign({ userId: rows[0].id, email: rows[0].email }, secret_key, {
+                expiresIn: '1h',
+            });
+            return res.json({ message: 'Login successful', token });
+        }
+
+        return res.status(401).json({ message: 'Invalid email or password' });
     } catch (error) {
+        console.log(error);
         return res.status(500).json({ message: 'Internal server error' });
     }
 };
