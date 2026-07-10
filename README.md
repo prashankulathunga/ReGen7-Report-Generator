@@ -758,7 +758,7 @@ npm run dev
 Backend will run on:
 
 ```txt
-http://localhost:5000
+http://localhost:3000
 ```
 
 ---
