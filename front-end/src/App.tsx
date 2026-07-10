@@ -3,7 +3,7 @@ import { LoginPage } from '@/components/LoginForm';
 import { RegisterForm } from '@/components/RegisterForm';
 import { useAppContext } from '@/context/AppContextProvider';
 import { DashboardPage } from '@/pages/DashboardPage';
-import { ReportManagementPage } from '@/pages/ReportManagementPage';
+import { ProjectManagementPage } from '@/pages/ProjectManagementPage';
 import { UserPage } from '@/pages/UserPage';
 import { Route, Routes } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ function App() {
                 {isUser ? (
                     <Route element={<MainSheet />}>
                         <Route index element={<DashboardPage />} />
-                        <Route path="project" element={<ReportManagementPage />} />
+                        <Route path="project" element={<ProjectManagementPage />} />
                     </Route>
                 ) : (
                     <Route element={<UserPage />}>

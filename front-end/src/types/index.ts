@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { loginSchema, registerSchema } from '@/lib/validation';
+import type { createProjectSchema, loginSchema, registerSchema } from '@/lib/validation';
 import type { FieldValues, Control, FieldPath } from 'react-hook-form';
 import type { HTMLInputTypeAttribute } from 'react';
 
@@ -11,6 +11,8 @@ export type TRegisterSchema = z.infer<typeof registerSchema>;
 export type TAuthUser = Omit<TRegisterSchema, 'password' | 'confirmPassword'> & {
     id: string;
 };
+
+export type TCreateProjectSchema = z.infer<typeof createProjectSchema>;
 
 // Form input types
 export type FormInputProps<T extends FieldValues> = {

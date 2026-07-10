@@ -32,3 +32,14 @@ export const registerSchema = z
         message: 'Password do not match',
         path: ['confirmPassword'],
     });
+
+export const createProjectSchema = z.object({
+    name: z
+        .string()
+        .min(3, 'Project name must be at least 3 characters')
+        .max(100, 'Project name must be less than 100 characters'),
+
+    description: z.string().max(500, 'Description must be less than 500 characters').optional(),
+
+    assignedUserIds: z.array(z.number()).optional(),
+});
