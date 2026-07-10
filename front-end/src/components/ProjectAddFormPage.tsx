@@ -3,7 +3,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '@/components/ui/button';
 import {
-    Card,
     CardContent,
     CardDescription,
     CardFooter,
@@ -44,7 +43,7 @@ export function ProjectAddForm() {
     };
 
     return (
-        <Card className="w-full max-w-2xl rounded-2xl">
+        <div>
             <CardHeader>
                 <CardTitle>Create Project</CardTitle>
                 <CardDescription className='text-xs md:text-sm text-muted-foreground/60'>
@@ -52,7 +51,7 @@ export function ProjectAddForm() {
                 </CardDescription>
             </CardHeader>
 
-            <CardContent>
+            <CardContent className='md:mt-10 mt-8'>
                 <form id="project-create-form" onSubmit={form.handleSubmit(onSubmitHandle)}>
                     <FieldGroup>
                         <FormInput
@@ -75,7 +74,7 @@ export function ProjectAddForm() {
                 </form>
             </CardContent>
 
-            <CardFooter className="flex justify-end gap-3">
+            <CardFooter className="flex justify-end gap-3 md:mt-8 mt-6">
                 <Button
                     type="button"
                     variant="outline"
@@ -94,6 +93,6 @@ export function ProjectAddForm() {
                     Create Project
                 </Button>
             </CardFooter>
-        </Card>
+        </div>
     );
 }
