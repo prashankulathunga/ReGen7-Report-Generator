@@ -33,7 +33,7 @@ const chartConfig = {
     },
     chrome: {
         label: 'Chrome',
-        color: 'var(--primary)',
+        color: 'var(--chart-1)',
     },
     safari: {
         label: 'Safari',
@@ -42,11 +42,11 @@ const chartConfig = {
 
     edge: {
         label: 'Edge',
-        color: 'var(--chart-4)',
+        color: 'var(--chart-3)',
     },
     other: {
         label: 'Other',
-        color: 'var(--chart-5)',
+        color: 'var(--chart-4)',
     },
 } satisfies ChartConfig;
 
@@ -55,13 +55,7 @@ export function ChartPie() {
         <div>
             <CardHeader className="items-center pb-0">
                 <CardTitle>Weekly All Submissions Summary</CardTitle>
-                <CardDescription className='text-xs -mt-1'>January - June 2024</CardDescription>
-                <div className="flex items-center gap-2 leading-none font-medium text-muted-foreground/60 text-xs md:text-sm md:mt-4 mt-2">
-                    Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-                </div>
-                <div className="leading-none text-muted-foreground text-xs md:text-sm">
-                    Showing total visitors for the last 6 months
-                </div>
+                <CardDescription className="text-xs -mt-1">January - June 2024</CardDescription>
             </CardHeader>
             <CardContent className="flex-1 pb-0 mt-8 md:mt-12">
                 <ChartContainer
@@ -73,9 +67,18 @@ export function ChartPie() {
                         <Pie data={chartData} dataKey="visitors" label nameKey="browser" />
                     </PieChart>
                 </ChartContainer>
+
+                <CardFooter>
+                    <div className="space-y-1 md:mt-8 mt-4">
+                        <p className="flex gap-2 leading-none font-medium md:mt-4 mt-2 text-xs md:text-sm">
+                            Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                        </p>
+                        <p className="leading-none text-xs md:text-sm text-muted-foreground/60">
+                            Showing total visitors for the last 6 months
+                        </p>
+                    </div>
+                </CardFooter>
             </CardContent>
-            <CardFooter className="flex-col gap-2 text-sm">
-            </CardFooter>
         </div>
     );
 }

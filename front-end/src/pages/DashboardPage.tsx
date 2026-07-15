@@ -1,6 +1,6 @@
 import { Chart } from '@/components/Chart';
 import { DashboardCards } from '@/components/DashboardCards';
-import { ChartPie} from '@/components/ChartPie';
+import { ChartPie } from '@/components/ChartPie';
 import { Card } from '@/components/ui/card';
 import { useAppContext } from '@/context/AppContextProvider';
 import type { DashboardCardData } from '@/types';
@@ -45,7 +45,10 @@ export const DashboardPage = () => {
         <div className="content-p w-full">
             <div>
                 <h3 className="font-semibold text-balance">
-                    Hey, welcome back <span className="font-bold font-mono text-muted-foreground">{user.firstName},</span>
+                    Hey, welcome back{' '}
+                    <span className="font-bold font-mono text-muted-foreground">
+                        {user.firstName},
+                    </span>
                 </h3>
                 <p className="lg:text-sm text-xs text-muted-foreground/60 text-balance">
                     {dateDash}
@@ -62,14 +65,14 @@ export const DashboardPage = () => {
                             </div>
                         ))}
 
-                        <Card className="col-span-12 lg:col-span-6 overflow-x-auto bg-primary/4">
-                            <Chart/>
+                        <Card className="col-span-12 lg:col-span-6 overflow-x-auto py-12 px-4 bg-primary/1">
+                            <Chart />
                         </Card>
-                        <Card className="col-span-12 lg:col-span-6 bg-accent/16">
-                            <ChartPie/>
+                        <Card className="col-span-12 lg:col-span-6 py-12 px-4">
+                            <ChartPie />
                         </Card>
-                        <Card className="col-span-12 min-h-56">
-                            <ReportTableM/>
+                        <Card className="col-span-12 min-h-56 py-12 px-4">
+                            <ReportTableM />
                         </Card>
                     </div>
                 )}

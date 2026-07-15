@@ -1,13 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
-import {
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
+import { CardContent, CardFooter } from '@/components/ui/card';
 
 import { FieldGroup } from '@/components/ui/field';
 
@@ -44,33 +38,7 @@ export function ProjectAddForm() {
 
     return (
         <div>
-            {/* Decorative background */}
-
-            <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -bottom-32 -left-20 -z-10 size-72 rounded-full bg-violet-500/10 blur-3xl"
-            />
-
-            <CardHeader className="border-b border-border/50 px-5 py-6 sm:px-8 sm:py-8">
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                    <div className="flex items-start gap-4">
-                        <div className="space-y-1.5">
-                            <div className="flex flex-wrap items-center gap-2">
-                                <CardTitle className="text-xl font-semibold tracking-tight sm:text-2xl">
-                                    Create Project
-                                </CardTitle>
-                            </div>
-
-                            <CardDescription className="max-w-2xl md:text-sm leading-6 text-muted-foreground/60 text-xs text-balance">
-                                Create a project workspace and provide the information your team
-                                needs to understand its purpose.
-                            </CardDescription>
-                        </div>
-                    </div>
-                </div>
-            </CardHeader>
-
-            <CardContent className="px-5 py-7 sm:px-8 sm:py-10">
+            <CardContent className="md:pb-12 pb-8">
                 <form
                     id="project-create-form"
                     onSubmit={form.handleSubmit(onSubmitHandle)}
@@ -80,9 +48,7 @@ export function ProjectAddForm() {
                         <legend className="sr-only">Project information</legend>
 
                         <div className="mb-7 space-y-1">
-                            <h3 className="text-sm font-semibold text-foreground">
-                                Project information
-                            </h3>
+                            <h3 className="font-semibold text-foreground">Project information</h3>
                             <p className="text-xs leading-5 text-muted-foreground">
                                 Enter a clear name and a short description for this project.
                             </p>
@@ -110,11 +76,7 @@ export function ProjectAddForm() {
                 </form>
             </CardContent>
 
-            <CardFooter className="flex flex-col-reverse gap-3 border-t border-border/50 bg-muted/20 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-                <p className="text-center text-xs text-muted-foreground sm:text-left">
-                    You can assign team members after creating the project.
-                </p>
-
+            <CardFooter className="flex flex-col-reverse gap-3 border-t border-border/50 bg-muted/20 px-5 py-5 sm:flex-row sm:items-center sm:justify-end sm:px-8">
                 <div className="flex w-full gap-3 sm:w-auto">
                     <Button
                         type="button"

@@ -7,6 +7,8 @@ const isManagerOrAdmin = (user) => {
 
 // add project -> only manager/admin
 const createProject = async (req, res) => {
+    // note: need to add functionality for assign the team members projects
+
     try {
         if (!req.user || !req.user.userId) {
             return res.status(401).json({ message: 'Unauthorized. User ID not found!' });
