@@ -12,6 +12,7 @@ import { FormTextarea } from '@/components/forms/FormTextArea';
 import { RotateCcw } from 'lucide-react';
 import { FormSelect } from '@/components/forms/FormSelect';
 import { useAppContext } from '@/context/AppContextProvider';
+import { Separator } from '@/components/ui/separator';
 
 export function ProjectAddForm() {
     const { allUser } = useAppContext();
@@ -54,34 +55,29 @@ export function ProjectAddForm() {
                     onSubmit={form.handleSubmit(onSubmitHandle)}
                     className="mx-auto max-w-3xl"
                 >
-                    <fieldset>
-                        <legend className="sr-only">Project information</legend>
+                    <div className="pb-8">
+                        <legend className="sr-only">Start new project with your team</legend>
 
-                        <div className="mb-7 space-y-1">
-                            <h3 className="font-semibold text-foreground">Project information</h3>
-                            <p className="text-xs leading-5 text-muted-foreground">
+                        <div className="mb-7 space-y-1 max-w-xl">
+                            <h3 className="font-medium text-foreground max-sm:text-base">
+                                Start new project with your team
+                            </h3>
+                            <p className="text-xs leading-4 text-muted-foreground/60 tracking-tight">
                                 Enter a clear name and a short description for this project.
                             </p>
                         </div>
+                        <Separator className="opacity-40" />
+                    </div>
 
-                        <FieldGroup className="gap-6">
+                    <FieldGroup className="gap-6 py-4">
+                        <div className="flex md:justify-between md:items-center flex-col md:flex-row gap-6">
                             <FormInput
                                 control={form.control}
                                 name="projectName"
                                 id="project-name"
                                 label="Project Name"
-                                placeholder="e.g. Internal Tooling"
+                                placeholder="Customer Management"
                             />
-
-                            <FormTextarea
-                                control={form.control}
-                                name="description"
-                                id="project-description"
-                                label="Description"
-                                placeholder="Describe the project goals, scope, and intended outcome..."
-                                description="A concise description helps managers and members quickly understand the project."
-                            />
-                            {/* //todo: need to add assign team member -> multiple select */}
                             <FormSelect
                                 control={form.control}
                                 name="assignedUserIds"
@@ -91,13 +87,22 @@ export function ProjectAddForm() {
                                 selectLabel="Members"
                                 id="assignedUserIds"
                             />
-                        </FieldGroup>
-                    </fieldset>
+                        </div>
+
+                        <FormTextarea
+                            control={form.control}
+                            name="description"
+                            id="project-description"
+                            label="Description"
+                            placeholder="Describe the project goals, scope, and intended outcome"
+                            description="A concise description helps managers and members quickly understand the project."
+                        />
+                    </FieldGroup>
                 </form>
             </CardContent>
 
-            <CardFooter className="flex flex-col-reverse gap-3 border-t border-border/50 bg-muted/20 px-5 py-5 sm:flex-row sm:items-center sm:justify-end sm:px-8">
-                <div className="flex w-full gap-3 sm:w-auto">
+            <CardFooter className="flex flex-col-reverse gap-3 border-t border-border/50 px-5 py-5 sm:flex-row sm:items-center sm:justify-end sm:px-8">
+                <div className="flex w-full gap-3 sm:w-auto md:mt-4 mt-2">
                     <Button
                         type="button"
                         variant="outline"
@@ -108,18 +113,18 @@ export function ProjectAddForm() {
                                 assignedUserIds: [],
                             })
                         }
-                        className="h-10 flex-1 rounded-xl px-5 sm:flex-none"
+                        className="h-10 flex-1 rounded-xl px-5 sm:flex-none text-xs md:text-sm"
                     >
-                        <RotateCcw className="mr-2 size-4" />
+                        <RotateCcw className="md:mr-2 md:size-4 size-3" />
                         Reset
                     </Button>
 
                     <Button
                         type="submit"
                         form="project-create-form"
-                        className="h-10 flex-1 rounded-xl px-6 sm:flex-none"
+                        className="h-10 flex-1 rounded-xl px-6 sm:flex-none text-xs md:text-sm"
                     >
-                        Create Project
+                        Create project
                     </Button>
                 </div>
             </CardFooter>
