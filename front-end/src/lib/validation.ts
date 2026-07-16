@@ -34,7 +34,7 @@ export const registerSchema = z
     });
 
 export const createProjectSchema = z.object({
-    name: z
+    projectName: z
         .string()
         .min(3, 'Project name must be at least 3 characters')
         .max(100, 'Project name must be less than 100 characters'),

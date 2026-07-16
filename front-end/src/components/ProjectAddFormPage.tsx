@@ -5,17 +5,21 @@ import { CardContent, CardFooter } from '@/components/ui/card';
 
 import { FieldGroup } from '@/components/ui/field';
 
-import type { TCreateProjectSchema } from '@/types';
+import type { SelectItem, TCreateProjectSchema } from '@/types';
 import { createProjectSchema } from '@/lib/validation';
 import { FormInput } from '@/components/forms/FormInput';
 import { FormTextarea } from '@/components/forms/FormTextArea';
 import { RotateCcw } from 'lucide-react';
+import { FormSelect } from '@/components/forms/FormSelect';
+import { useAppContext } from '@/context/AppContextProvider';
 
 export function ProjectAddForm() {
+    const { allUser } = useAppContext();
+
     const form = useForm<TCreateProjectSchema>({
         resolver: zodResolver(createProjectSchema),
         defaultValues: {
-            name: '',
+            projectName: '',
             description: '',
             assignedUserIds: [],
         },
@@ -26,15 +30,21 @@ export function ProjectAddForm() {
             console.log('project values:', data);
 
             form.reset({
-                name: '',
+                projectName: '',
                 description: '',
                 assignedUserIds: [],
             });
         } catch (error) {
             console.log(error);
-            //   toast.error("Something went wrong");
         }
     };
+
+    const selectItems: SelectItem[] = allUser
+        .filter((user) => user.role === 'Member')
+        .map((user) => ({
+            label: `${user.firstName} ${user.lastName}`,
+            value: user.id,
+        }));
 
     return (
         <div>
@@ -57,7 +67,7 @@ export function ProjectAddForm() {
                         <FieldGroup className="gap-6">
                             <FormInput
                                 control={form.control}
-                                name="name"
+                                name="projectName"
                                 id="project-name"
                                 label="Project Name"
                                 placeholder="e.g. Internal Tooling"
@@ -71,6 +81,16 @@ export function ProjectAddForm() {
                                 placeholder="Describe the project goals, scope, and intended outcome..."
                                 description="A concise description helps managers and members quickly understand the project."
                             />
+                            {/* //todo: need to add assign team member -> multiple select */}
+                            <FormSelect
+                                control={form.control}
+                                name="assignedUserIds"
+                                label="Assign Members"
+                                placeholder="Select Members"
+                                items={selectItems}
+                                selectLabel="Members"
+                                id="assignedUserIds"
+                            />
                         </FieldGroup>
                     </fieldset>
                 </form>
@@ -83,7 +103,7 @@ export function ProjectAddForm() {
                         variant="outline"
                         onClick={() =>
                             form.reset({
-                                name: '',
+                                projectName: '',
                                 description: '',
                                 assignedUserIds: [],
                             })
