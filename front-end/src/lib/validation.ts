@@ -5,7 +5,7 @@ export const roleSchema = z.enum(['Member', 'Manager', 'Admin']);
 
 // User validations
 export const loginSchema = z.object({
-    email: z.email({ pattern: z.regexes.email }),
+    email: z.email(),
     password: z
         .string()
         .min(1, 'Password is required')
@@ -16,7 +16,7 @@ export const registerSchema = z
     .object({
         firstName: z.string().min(1, 'Name is required'),
         lastName: z.string().min(1, 'Name is required'),
-        email: z.email({ pattern: z.regexes.email }),
+        email: z.email(),
         password: z
             .string()
             .min(1, 'Password is required')
@@ -33,13 +33,12 @@ export const registerSchema = z
         path: ['confirmPassword'],
     });
 
+// we can use update data to validate
 export const createProjectSchema = z.object({
     projectName: z
         .string()
         .min(3, 'Project name must be at least 3 characters')
         .max(100, 'Project name must be less than 100 characters'),
-
     description: z.string().max(500, 'Description must be less than 500 characters').optional(),
-
     assignedUserIds: z.array(z.number()).optional(),
 });

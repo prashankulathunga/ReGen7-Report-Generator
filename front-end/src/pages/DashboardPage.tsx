@@ -71,7 +71,7 @@ export const DashboardPage = () => {
                         <Card className="col-span-12 lg:col-span-6 py-12 px-4">
                             <ChartPie />
                         </Card>
-                        <Card className="col-span-12 min-h-56 py-12 px-4">
+                        <Card className="col-span-12 min-h-56 py-12 px-4 shadow-none">
                             <ReportTableM />
                         </Card>
                     </div>
