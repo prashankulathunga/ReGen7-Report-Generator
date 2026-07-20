@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { useAppContext } from '@/context/AppContextProvider';
 import type { DashboardCardData } from '@/types';
 import { ReportTableM } from '@/components/ReportTableM';
+import { ReportForm } from '@/components/ReportForm';
 
 export const DashboardPage = () => {
     const { user } = useAppContext();
@@ -57,7 +58,7 @@ export const DashboardPage = () => {
             <div className="mt-6 md:mt-8">
                 {/* manager section dashboard */}
 
-                {user.role === 'Manager' && (
+                {user.role === 'Manager' || user.role === 'Admin' ? (
                     <div className="grid grid-cols-12 gap-4">
                         {cardData.map((data, index) => (
                             <div key={index} className="col-span-12 md:col-span-6 lg:col-span-3">
@@ -75,7 +76,13 @@ export const DashboardPage = () => {
                             <ReportTableM />
                         </Card>
                     </div>
-                )}
+                ):
+                (
+                    <div>
+                        <ReportForm/>
+                    </div>
+                )
+                }
             </div>
         </div>
     );

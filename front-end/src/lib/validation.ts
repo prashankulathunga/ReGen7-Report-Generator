@@ -1,4 +1,3 @@
-// zod validations
 import { z } from 'zod';
 
 export const roleSchema = z.enum(['Member', 'Manager', 'Admin']);
@@ -42,3 +41,5 @@ export const createProjectSchema = z.object({
     description: z.string().max(500, 'Description must be less than 500 characters').optional(),
     assignedUserIds: z.array(z.number()).optional(),
 });
+
+export const updateProjectSchema = createProjectSchema.partial();

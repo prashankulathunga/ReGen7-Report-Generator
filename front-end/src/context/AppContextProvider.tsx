@@ -28,12 +28,12 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         lastName: 'William',
         email: 'sarah.w@example.com',
         regCode: 'RGEN1002',
-        role: 'Manager',
+        role: 'Member',
     });
 
     const [allUser, setAllUser] = useState<TAuthUser[]>([
         {
-            id: 'usr001',
+            id: 'usr_001',
             firstName: 'Alex',
             lastName: 'Johnson',
             email: 'alex.j@example.com',
